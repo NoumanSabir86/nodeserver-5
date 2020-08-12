@@ -19,6 +19,13 @@ router.get("/", async (req, res) => {
   return res.send(products);
 });
 
+function hello(req, res, next) {
+  return res.send("love");
+}
+
+router.get("/pk", hello);
+
+
 router.get("/:id", async (req, res) => {
   try {
     let product = await Product.findById(req.params.id);
