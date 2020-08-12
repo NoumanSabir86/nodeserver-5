@@ -9,15 +9,15 @@ const stripe = require("stripe")(
 );
 const { v4: uuidv4 } = require("uuid");
 
-async function getAllProducts(req, res) {
-  let page = Number(req.query.page ? req.query.page : 1);
-  let perPage = Number(req.query.perPage ? req.query.perPage : 20);
-  let skipRecords = perPage * (page - 1);
-  let products = await Product.find().skip(skipRecords).limit(perPage);
-  return res.send(products);
-}
+// async function getAllProducts(req, res) {
+//   let page = Number(req.query.page ? req.query.page : 1);
+//   let perPage = Number(req.query.perPage ? req.query.perPage : 20);
+//   let skipRecords = perPage * (page - 1);
+//   let products = await Product.find().skip(skipRecords).limit(perPage);
+//   return res.send(products);
+// }
 
-router.get("/", getAllProducts);
+// router.get("/", getAllProducts);
 
 
 
