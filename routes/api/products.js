@@ -9,9 +9,6 @@ const stripe = require("stripe")(
 );
 const { v4: uuidv4 } = require("uuid");
 
-
-
-
 async function getAllProducts(req, res) {
   let page = Number(req.query.page ? req.query.page : 1);
   let perPage = Number(req.query.perPage ? req.query.perPage : 20);
@@ -21,14 +18,6 @@ async function getAllProducts(req, res) {
 }
 
 router.get("/", getAllProducts);
-
-
-
-
-
-router.get("/pk", hello);
-
-
 router.get("/:id", async (req, res) => {
   try {
     let product = await Product.findById(req.params.id);
