@@ -9,19 +9,19 @@ const stripe = require("stripe")(
 );
 const { v4: uuidv4 } = require("uuid");
 
-router.get("/favicon.ico", (req, res) => res.status(204));
-
-router.get("/", async (req, res) => {
+async function getAllProducts(req, res) {
   let page = Number(req.query.page ? req.query.page : 1);
   let perPage = Number(req.query.perPage ? req.query.perPage : 20);
   let skipRecords = perPage * (page - 1);
   let products = await Product.find().skip(skipRecords).limit(perPage);
   return res.send(products);
-});
-
-function hello(req, res, next) {
-  return res.send("love");
 }
+
+router.get("/", getAllProducts);
+
+
+
+
 
 router.get("/pk", hello);
 
